@@ -31,7 +31,8 @@ are found in multiple limestone layers, which lie some
 represent several varieties of perch, as well as
 other freshwater genera and herring similar to those
 in modern oceans. Other fish such as paddlefish,
-garpike and stingray are also present."""
+garpike and stingray are also present.""",
+"jdfhsdfg kjgfdahgj jhdgfda kdj kj"
 ]
 
 USERS = {"bob": "123", 
@@ -51,9 +52,15 @@ if USERS.get(user) == password:
         f"\nWelcome to the app, {user.title()}.\n" + \
         f"We have 3 texts to be analyzed.\n" + \
         f"\n{SEPARATOR}\n"
-    )       
-    choice = input("Enter a number btw. 1 and 3 to select: " )
-    if choice in ["1", "2", "3"]:
+    )
+    
+
+    numbers = list(range(1, len(TEXTS) + 1))
+    choice_numbers = [str(num) for num in numbers]
+    print(choice_numbers)
+
+    choice = input(f"Enter a number btw. 1 and {len(TEXTS)} to select: " )
+    if (choice in choice_numbers) and (choice.isnumeric):
         words_list = TEXTS[int(choice)-1].split()
         word_is_title = 0
         word_is_uppercase = 0
@@ -65,7 +72,7 @@ if USERS.get(user) == password:
         length_set = set()
 
         for word in words_list:
-            word = word.strip(".,")
+            word = word.strip(".,/\"!_=*+/")
             # adding word length from selected text to length set 
             length_set.add(len(word)) 
             if word.istitle(): 
