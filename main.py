@@ -60,7 +60,7 @@ if USERS.get(user) == password:
     print(choice_numbers)
 
     choice = input(f"Enter a number btw. 1 and {len(TEXTS)} to select: " )
-    if (choice in choice_numbers) and (choice.isnumeric):
+    if (choice in choice_numbers):
         words_list = TEXTS[int(choice)-1].split()
         word_is_title = 0
         word_is_uppercase = 0
@@ -72,7 +72,7 @@ if USERS.get(user) == password:
         length_set = set()
 
         for word in words_list:
-            word = word.strip(".,/\"!_=*+/")
+            word = word.strip(".,/\"'!?/():;-")
             # adding word length from selected text to length set 
             length_set.add(len(word)) 
             if word.istitle(): 
